@@ -6,7 +6,6 @@ export type RestaurantsLocalityProp = {
 }
 
 export const getRestaurantsByLocality = ({city, locality}: RestaurantsLocalityProp) => {
-    console.log(city, locality);
     const cityKey = decodeURIComponent(city);
     const localityKey = decodeURIComponent(locality);
 
