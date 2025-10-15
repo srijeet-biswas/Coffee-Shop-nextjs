@@ -1,4 +1,3 @@
-import Header from "@/components/layouts/header";
 import {
   Card,
   CardHeader,
@@ -7,24 +6,16 @@ import {
 import Link from "next/link";
 import type { Route } from "next";
 
-const popularLocalities = [
-  { name: "Indiranagar", path: "/bengaluru/indiranagar" },
-  { name: "Marathahalli", path: "/bengaluru/marathahalli" },
-  { name: "Whitefield", path: "/bengaluru/whitefield" },
-  { name: "Koramangala", path: "/bengaluru/koramangala" },
-];
-
-const cities = [
-  { name: "Delhi NCR", path: "/delhiNcr" },
-  { name: "Kolkata", path: "/kolkata" },
-  { name: "Mumbai", path: "/mumbai" },
-  { name: "Bengaluru", path: "/bengaluru" },
-];
+import { getAllCities, getLocalitiesByCity } from "@/src/app/_libs/services/cities.service";
 
 export default function HomePage() {
+  const currentCityName = "Bengaluru";
+
+  const allCities = getAllCities();
+  const popularLocalities = getLocalitiesByCity(currentCityName);
+
   return (
     <div className="relative">
-      <Header />
       <main className="w-full">
         <section
           className="relative flex h-[60dvh] flex-col items-center justify-center"
@@ -37,7 +28,7 @@ export default function HomePage() {
           <div className="text-center">
             <h1 className="text-5xl font-bold text-white">zomato</h1>
             <p className="mt-4 text-2xl text-white">
-              Discover the best food & drinks in Bengaluru
+              Discover the best food & drinks in {currentCityName}
             </p>
           </div>
         </section>
@@ -68,7 +59,7 @@ export default function HomePage() {
               Explore options near me
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {cities.map((city) => (
+              {allCities.map((city) => (
                 <Link href={city.path as Route} key={city.name} passHref>
                   <Card className="cursor-pointer transition-transform duration-200 hover:scale-105">
                     <CardHeader>

@@ -11,6 +11,9 @@ import { geologica } from "@/app/_config/fonts";
 import { getJsonLd } from "@/app/_config/jsonId";
 import { metadata } from "@/app/_config/metadata";
 import { viewport } from "@/app/_config/viewport";
+import { AuthContextProvider } from "@/src/context/AuthContext";
+import Header from "@/src/components/layouts/header";
+import AuthModal from "@/src/components/AuthModal";
 
 export { metadata, viewport };
 
@@ -22,7 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geologica.variable} font-sans antialiased`}>
-        {children}
+        <AuthContextProvider>
+          <Header />
+          <AuthModal />
+          {children}
+        </AuthContextProvider>
         <SonnarToaster />
         <GoogleAnalyticsScripts />
         <SpeedInsights />

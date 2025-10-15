@@ -8,7 +8,7 @@ import { env } from "env";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  typedRoutes: true,
+  typedRoutes: false,
   productionBrowserSourceMaps: true, // sentry and posthog config
   skipTrailingSlashRedirect: true,
   serverExternalPackages: ["import-in-the-middle", "require-in-the-middle"], // posthog config
