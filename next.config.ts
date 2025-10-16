@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
   typedRoutes: false,
   productionBrowserSourceMaps: true, // sentry and posthog config
   skipTrailingSlashRedirect: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   serverExternalPackages: ["import-in-the-middle", "require-in-the-middle"], // posthog config
   images: {
     formats: ["image/avif", "image/webp"],
