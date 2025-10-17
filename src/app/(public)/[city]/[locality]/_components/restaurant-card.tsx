@@ -35,7 +35,12 @@ export default function RestaurantCard({ restaurant,index }: RestaurantCardProps
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">{restaurant.cuisine}</p>
+        {restaurant.cuisine && restaurant.cuisine.map((cuisine, index) => {
+            const cleanCuisineText = cuisine.replace(/[^a-zA-Z0-9 ]/g, "").trim();
+            return (
+              <Badge key={index}>{cleanCuisineText}</Badge>
+            );
+         })}
       </CardContent>
     </Card>
   );

@@ -7,8 +7,21 @@ import Link from "next/link";
 import type { Route } from "next";
 
 import { getAllCities, getLocalitiesByCity } from "@/src/app/_libs/services/cities.service";
+import { useAuthModal } from "@/src/context/AuthContext";
 
 export default function HomePage() {
+//  const { openModal, setInitialView } = useAuthModal();
+
+  /*const handleSignInClick = () => {
+    setInitialView('signIn');
+    openModal();
+  };
+
+  const handleSignUpClick = () => {
+    setInitialView('signUp');
+    openModal();
+  };*/
+
   const currentCityName = "Bengaluru";
 
   const allCities = getAllCities();
