@@ -29,7 +29,6 @@ export default async function CityPage({ params }: CityPageProps) {
 
   return (
     <>
-      <SubHeader />
       <main className="container mx-auto py-8">
         <Breadcrumb>
           <BreadcrumbList>

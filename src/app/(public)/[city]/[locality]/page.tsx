@@ -30,7 +30,6 @@ export default async function LocalityPage({params}: LocalityPageProps) {
 
   return (
     <>
-    <SubHeader />
     <main className="container mx-auto py-8">
       <Breadcrumb>
         <BreadcrumbList>
