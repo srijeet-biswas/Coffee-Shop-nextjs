@@ -4,21 +4,19 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
-// import { useAuthModal } from "@/context/AuthContext"; // Assuming this is correct
+import { useAuthModal } from "@/context/AuthContext";
 
 export default function Header() {
-  // const { openModal, setInitialView } = useAuthModal();
+  const { openModal, setInitialView } = useAuthModal();
 
-  // const handleSignInClick = () => {
-  //     console.log('handleClick signIn');
-  //     // setInitialView('signIn');
-  //     // openModal();
-  // };
+  const handleSignInClick = () => {
+    setInitialView("signIn");
+    openModal();
+  };
 
   const handleSignUpClick = () => {
-    console.warn("handleClick signUp");
-    // setInitialView('signUp');
-    // openModal();
+    setInitialView("signUp");
+    openModal();
   };
 
   return (
@@ -28,7 +26,7 @@ export default function Header() {
       </Link>
       <div className="flex items-center gap-4">
         {/* Semicolon removed from this line */}
-        <button onClick={() => alert("Clicked!")}>Click Me</button>
+        <Button onClick={handleSignInClick}>Sign in</Button>
 
         {/* This button's functionality depends on the Button component's implementation */}
         <Button onClick={handleSignUpClick}>Sign up</Button>
