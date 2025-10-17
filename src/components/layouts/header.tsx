@@ -2,19 +2,21 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useAuthModal } from "@/context/AuthContext"; // Adjust path as needed
+// import { useAuthModal } from "@/context/AuthContext"; // Assuming this is correct
 
 export default function Header() {
-    const { openModal, setInitialView } = useAuthModal();
+    // const { openModal, setInitialView } = useAuthModal();
 
     const handleSignInClick = () => {
-        setInitialView('signIn');
-        openModal();
+        console.log('handleClick signIn');
+        // setInitialView('signIn');
+        // openModal();
     };
 
     const handleSignUpClick = () => {
-        setInitialView('signUp');
-        openModal();
+        console.log('handleClick signUp');
+        // setInitialView('signUp');
+        // openModal();
     };
 
     return (
@@ -23,9 +25,10 @@ export default function Header() {
                 zomato
             </Link>
             <div className="flex items-center gap-4">
-                <Button variant="ghost" onClick={handleSignInClick}>
-                    Log in
-                </Button>
+                {/* Semicolon removed from this line */}
+                <button onClick={() => alert('Clicked!')}>Click Me</button>
+
+                {/* This button's functionality depends on the Button component's implementation */}
                 <Button onClick={handleSignUpClick}>
                     Sign up
                 </Button>

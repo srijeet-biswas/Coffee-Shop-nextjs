@@ -11,6 +11,9 @@ import Link from "next/link";
 import type { Route } from "next";
 
 import { getLocalitiesByCity } from "@/src/app/_libs/services/cities.service";
+import { getRestaurantsByLocality } from "@/src/app/_libs/services/restaurants.service";
+import SubHeader from "@/src/components/layouts/SubHeader";
+import RestaurantCard from "@/src/app/(public)/[city]/[locality]/_components/restaurant-card";
 
 type CityPageProps = {
   params: {
@@ -22,9 +25,11 @@ export default async function CityPage({ params }: CityPageProps) {
   const city = decodeURIComponent(params.city);
   const capitalizedCity = city.charAt(0).toUpperCase() + city.slice(1);
   const localities = getLocalitiesByCity(city);
+  const restaurantsByCity = getRestaurantsByLocality({city});
 
   return (
     <>
+      <SubHeader />
       <main className="container mx-auto py-8">
         <Breadcrumb>
           <BreadcrumbList>
@@ -37,6 +42,16 @@ export default async function CityPage({ params }: CityPageProps) {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
+
+        <h1 className="mt-6 text-3xl font-bold">
+          Popular Restaurants in {capitalizedCity}
+        </h1>
+
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {restaurantsByCity.map((restaurant, index) => (
+              <RestaurantCard key={restaurant.id} restaurant={restaurant} index={index} />
+          ))}
+        </div>
 
         <h1 className="mt-6 text-3xl font-bold">
           Popular Localities in {capitalizedCity}

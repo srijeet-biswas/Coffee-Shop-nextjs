@@ -12,8 +12,8 @@ import { getJsonLd } from "@/app/_config/jsonId";
 import { metadata } from "@/app/_config/metadata";
 import { viewport } from "@/app/_config/viewport";
 import { AuthContextProvider } from "@/src/context/AuthContext";
-import Header from "@/src/components/layouts/header";
 import AuthModal from "@/src/components/AuthModal";
+import Header from "@/src/components/layouts/Header";
 
 export { metadata, viewport };
 
