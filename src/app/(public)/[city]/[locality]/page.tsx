@@ -1,5 +1,4 @@
-"use client";
-import { getRestaurantsByLocality } from "@/app/_libs/services/restaurants.service";
+// Remove "use client" - this will be a Server Component
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,9 +7,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import RestaurantCard from "./_components/restaurant-card";
-import React from "react";
+
+import { getRestaurantsByLocality } from "@/app/_libs/services/restaurants.service";
 import SubHeader from "@/src/components/layouts/SubHeader";
+
+import RestaurantCard from "./_components/restaurant-card";
 
 type LocalityPageProps = {
   params: {
@@ -19,45 +20,47 @@ type LocalityPageProps = {
   };
 };
 
-export default async function LocalityPage({params}: LocalityPageProps) {
-  const city = decodeURIComponent(params.city);
-  const locality = decodeURIComponent(params. locality);
+export default async function LocalityPage({ params }: LocalityPageProps) {
+  const { city: paramsCity, locality: paramsLocality } = await params;
+  const city = decodeURIComponent(paramsCity);
+  const locality = decodeURIComponent(paramsLocality);
 
-  const restaurantList = getRestaurantsByLocality({ city, locality });
+  // Don't forget to await if this is an async function
+  const restaurantList = await getRestaurantsByLocality({ city, locality });
 
   const capitalizedLocality = locality.charAt(0).toUpperCase() + locality.slice(1);
   const capitalizedCity = city.charAt(0).toUpperCase() + city.slice(1);
 
   return (
     <>
-    <SubHeader />
-    <main className="container mx-auto py-8">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem key="home">
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator key="sep1" />
-          <BreadcrumbItem key="city">
-            <BreadcrumbLink href={`/${city}`}>{capitalizedCity}</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator key="sep2" />
-          <BreadcrumbItem key="locality">
-            <BreadcrumbPage>{capitalizedLocality}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <SubHeader />
+      <main className="container mx-auto py-8">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem key="home">
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator key="sep1" />
+            <BreadcrumbItem key="city">
+              <BreadcrumbLink href={`/${city}`}>{capitalizedCity}</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator key="sep2" />
+            <BreadcrumbItem key="locality">
+              <BreadcrumbPage>{capitalizedLocality}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
-      <h1 className="mt-6 text-3xl font-bold">
-        Delivery Restaurants in {capitalizedLocality}, {capitalizedCity}
-      </h1>
+        <h1 className="mt-6 text-3xl font-bold">
+          Delivery Restaurants in {capitalizedLocality}, {capitalizedCity}
+        </h1>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {restaurantList.map((restaurant, index) => (
-          <RestaurantCard key={restaurant.id} restaurant={restaurant} index={index} />
-        ))}
-      </div>
-    </main>
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {restaurantList.map((restaurant, index) => (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} index={index} />
+          ))}
+        </div>
+      </main>
     </>
   );
 }
