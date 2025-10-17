@@ -1,16 +1,14 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
 import type { Route } from "next";
+import Link from "next/link";
+
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { getAllCities, getLocalitiesByCity } from "@/src/app/_libs/services/cities.service";
-import { useAuthModal } from "@/src/context/AuthContext";
+
+// import { useAuthModal } from "@/src/context/AuthContext";
 
 export default function HomePage() {
-//  const { openModal, setInitialView } = useAuthModal();
+  //  const { openModal, setInitialView } = useAuthModal();
 
   /*const handleSignInClick = () => {
     setInitialView('signIn');
@@ -47,14 +45,10 @@ export default function HomePage() {
         </section>
 
         <div className="container mx-auto">
-
           <section className="mx-auto mt-12 w-full max-w-6xl">
-            <h2 className="text-3xl font-semibold">
-              Popular localities in and around Bengaluru
-            </h2>
+            <h2 className="text-3xl font-semibold">Popular localities in and around Bengaluru</h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {popularLocalities.map((locality) => (
-
                 <Link href={locality.path as Route} key={locality.name} passHref>
                   <Card className="cursor-pointer transition-transform duration-200 hover:scale-105">
                     <CardHeader>
@@ -66,11 +60,8 @@ export default function HomePage() {
             </div>
           </section>
 
-
           <section className="mx-auto my-12 w-full max-w-6xl">
-            <h2 className="text-3xl font-semibold">
-              Explore options near me
-            </h2>
+            <h2 className="text-3xl font-semibold">Explore options near me</h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {allCities.map((city) => (
                 <Link href={city.path as Route} key={city.name} passHref>

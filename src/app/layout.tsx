@@ -11,9 +11,9 @@ import { geologica } from "@/app/_config/fonts";
 import { getJsonLd } from "@/app/_config/jsonId";
 import { metadata } from "@/app/_config/metadata";
 import { viewport } from "@/app/_config/viewport";
-import { AuthContextProvider } from "@/src/context/AuthContext";
 import AuthModal from "@/src/components/AuthModal";
-import Header from "@/src/components/layouts/Header";
+import Header from "@/src/components/layouts/header";
+import { AuthContextProvider } from "@/src/context/AuthContext";
 
 export { metadata, viewport };
 
