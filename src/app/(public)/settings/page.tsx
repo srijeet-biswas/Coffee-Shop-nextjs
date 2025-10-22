@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useAuthModal } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useAuthModal } from "@/context/AuthContext";
+import { Laptop, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Laptop } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
   const { user, openModal, setInitialView, isLoading } = useAuthModal(); // Added isLoading
