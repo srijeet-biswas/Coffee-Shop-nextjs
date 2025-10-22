@@ -1,0 +1,65 @@
+"use client";
+
+import Image from "next/image";
+
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import { useRestaurants } from "@/src/app/hooks/useRestaurants";
+
+type RestaurantCardProps = {
+  restaurant: {
+    id: string;
+    name: string;
+    city_path: string;
+    locality_path: string;
+    img_path: string;
+    min_order: number;
+    rating: number;
+    cuisine: Array<string>;
+    is_open: boolean;
+  };
+  index: number;
+};
+
+export default function RestaurantCard({ restaurant, index }: RestaurantCardProps) {
+  const { fetchRestaurants } = useRestaurants();
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await fetchRestaurants({
+  //       city: "bengaluru",
+  //       locality: "koramangala",
+  //       pageSize: 10,
+  //     });
+  //     console.log("data:", data);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  return (
+    <Card className="overflow-hidden transition-transform duration-200 hover:scale-105">
+      <Image
+        src={restaurant.img_path}
+        alt={restaurant.name}
+        width={400}
+        height={200}
+        className="h-40 w-full object-cover"
+        priority={index < 10}
+      />
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+          <Badge>{restaurant.rating} ★</Badge>
+        </div>
+      </CardHeader>
+      <CardContent>
+        {restaurant.cuisine &&
+          restaurant.cuisine.map((cuisine, index) => {
+            const cleanCuisineText = cuisine.replace(/[^a-zA-Z0-9 ]/g, "").trim();
+            return <Badge key={index}>{cleanCuisineText}</Badge>;
+          })}
+      </CardContent>
+    </Card>
+  );
+}

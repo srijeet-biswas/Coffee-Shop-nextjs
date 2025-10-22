@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Ahmedabad",
+    "path": "/ahmedabad",
+    "localities": [
+      {"name": "Bopal", "path": "/ahmedabad/bopal", "enabled": true},
+      {"name": "Bodakdev", "path": "/ahmedabad/bodakdev", "enabled": true},
+      {"name": "Chandkheda", "path": "/ahmedabad/chandkheda", "enabled": true},
+      {"name": "Maninagar", "path": "/ahmedabad/maninagar", "enabled": true},
+      {"name": "Navrangpura", "path": "/ahmedabad/navrangpura", "enabled": true},
+      {"name": "Prahladnagar", "path": "/ahmedabad/prahladnagar", "enabled": true},
+      {"name": "Satellite", "path": "/ahmedabad/satellite", "enabled": true},
+      {"name": "Shahibaug", "path": "/ahmedabad/shahibaug", "enabled": true},
+      {"name": "Thaltej", "path": "/ahmedabad/thaltej", "enabled": true},
+      {"name": "Vastrapur", "path": "/ahmedabad/vastrapur", "enabled": true}
+    ]
+  },
+  {
+    "name": "Bengaluru",
+    "path": "/bengaluru",
+    "localities": [
+      {"name": "BTM Layout", "path": "/bengaluru/btm-layout", "enabled": true},
+      {"name": "Electronic City", "path": "/bengaluru/electronic-city", "enabled": true},
+      {"name": "HSR Layout", "path": "/bengaluru/hsr-layout", "enabled": true},
+      {"name": "Indiranagar", "path": "/bengaluru/indiranagar", "enabled": true},
+      {"name": "Jayanagar", "path": "/bengaluru/jayanagar", "enabled": true},
+      {"name": "Koramangala", "path": "/bengaluru/koramangala", "enabled": true},
+      {"name": "Malleshwaram", "path": "/bengaluru/malleshwaram", "enabled": true},
+      {"name": "Marathahalli", "path": "/bengaluru/marathahalli", "enabled": true},
+      {"name": "Sarjapur Road", "path": "/bengaluru/sarjapur-road", "enabled": true},
+      {"name": "Whitefield", "path": "/bengaluru/whitefield", "enabled": true}
+    ]
+  },
+  {
+    "name": "Chennai",
+    "path": "/chennai",
+    "localities": [
+      {"name": "Adyar", "path": "/chennai/adyar", "enabled": true},
+      {"name": "Anna Nagar", "path": "/chennai/anna-nagar", "enabled": true},
+      {"name": "ECR (East Coast Road)", "path": "/chennai/ecr", "enabled": true},
+      {"name": "Guindy", "path": "/chennai/guindy", "enabled": true},
+      {"name": "Mylapore", "path": "/chennai/mylapore", "enabled": true},
+      {"name": "Nungambakkam", "path": "/chennai/nungambakkam", "enabled": true},
+      {"name": "OMR (Old Mahabalipuram Rd)", "path": "/chennai/omr", "enabled": true},
+      {"name": "Sholinganallur", "path": "/chennai/sholinganallur", "enabled": true},
+      {"name": "T. Nagar", "path": "/chennai/t-nagar", "enabled": true},
+      {"name": "Velachery", "path": "/chennai/velachery", "enabled": true}
+    ]
+  },
+  {
+    "name": "Delhi",
+    "path": "/delhi",
+    "localities": [
+      {"name": "Chandni Chowk", "path": "/delhi/chandni-chowk", "enabled": true},
+      {"name": "Connaught Place", "path": "/delhi/connaught-place", "enabled": true},
+      {"name": "Dwarka Sector 7", "path": "/delhi/dwarka-sector-7", "enabled": true},
+      {"name": "Greater Kailash 1", "path": "/delhi/greater-kailash-1", "enabled": true},
+      {"name": "Hauz Khas", "path": "/delhi/hauz-khas", "enabled": true},
+      {"name": "Karol Bagh", "path": "/delhi/karol-bagh", "enabled": true},
+      {"name": "Pitampura", "path": "/delhi/pitampura", "enabled": true},
+      {"name": "Rohini Sector 11", "path": "/delhi/rohini-sector-11", "enabled": true},
+      {"name": "Saket", "path": "/delhi/saket", "enabled": true},
+      {"name": "Vasant Vihar", "path": "/delhi/vasant-vihar", "enabled": true}
+    ]
+  },
+  {
+    "name": "Hyderabad",
+    "path": "/hyderabad",
+    "localities": [
+      {"name": "Attapur", "path": "/hyderabad/attapur", "enabled": true},
+      {"name": "Banjara Hills", "path": "/hyderabad/banjara-hills", "enabled": true},
+      {"name": "Begumpet", "path": "/hyderabad/begumpet", "enabled": true},
+      {"name": "Gachibowli", "path": "/hyderabad/gachibowli", "enabled": true},
+      {"name": "HITEC City", "path": "/hyderabad/hitec-city", "enabled": true},
+      {"name": "Jubilee Hills", "path": "/hyderabad/jubilee-hills", "enabled": true},
+      {"name": "Kondapur", "path": "/hyderabad/kondapur", "enabled": true},
+      {"name": "Kukatpally", "path": "/hyderabad/kukatpally", "enabled": true},
+      {"name": "Miyapur", "path": "/hyderabad/miyapur", "enabled": true},
+      {"name": "Secunderabad", "path": "/hyderabad/secunderabad", "enabled": true}
+    ]
+  },
+  {
+    "name": "Jaipur",
+    "path": "/jaipur",
+    "localities": [
+      {"name": "Ajmer Road", "path": "/jaipur/ajmer-road", "enabled": true},
+      {"name": "C-Scheme", "path": "/jaipur/c-scheme", "enabled": true},
+      {"name": "Civil Lines", "path": "/jaipur/civil-lines", "enabled": true},
+      {"name": "Jagatpura", "path": "/jaipur/jagatpura", "enabled": true},
+      {"name": "Malviya Nagar", "path": "/jaipur/malviya-nagar", "enabled": true},
+      {"name": "Mansarovar", "path": "/jaipur/mansarovar", "enabled": true},
+      {"name": "Raja Park", "path": "/jaipur/raja-park", "enabled": true},
+      {"name": "Shyam Nagar", "path": "/jaipur/shyam-nagar", "enabled": true},
+      {"name": "Tonk Road", "path": "/jaipur/tonk-road", "enabled": true},
+      {"name": "Vaishali Nagar", "path": "/jaipur/vaishali-nagar", "enabled": true}
+    ]
+  },
+  {
+    "name": "Kolkata",
+    "path": "/kolkata",
+    "localities": [
+      {"name": "Alipore", "path": "/kolkata/alipore", "enabled": true},
+      {"name": "Ballygunge", "path": "/kolkata/ballygunge", "enabled": true},
+      {"name": "Esplanade", "path": "/kolkata/esplanade", "enabled": true},
+      {"name": "Gariahat", "path": "/kolkata/gariahat", "enabled": true},
+      {"name": "Jadavpur", "path": "/kolkata/jadavpur", "enabled": true},
+      {"name": "New Town", "path": "/kolkata/new-town", "enabled": true},
+      {"name": "Park Street", "path": "/kolkata/park-street", "enabled": true},
+      {"name": "Rajarhat", "path": "/kolkata/rajarhat", "enabled": true},
+      {"name": "Salt Lake City (Sector 5)", "path": "/kolkata/salt-lake-city-sector-5", "enabled": true},
+      {"name": "Tollygunge", "path": "/kolkata/tollygunge", "enabled": true}
+    ]
+  },
+  {
+    "name": "Lucknow",
+    "path": "/lucknow",
+    "localities": [
+      {"name": "Aliganj", "path": "/lucknow/aliganj", "enabled": true},
+      {"name": "Aminabad", "path": "/lucknow/aminabad", "enabled": true},
+      {"name": "Charbagh", "path": "/lucknow/charbagh", "enabled": true},
+      {"name": "Chowk", "path": "/lucknow/chowk", "enabled": true},
+      {"name": "Faizabad Road", "path": "/lucknow/faizabad-road", "enabled": true},
+      {"name": "Gomti Nagar", "path": "/lucknow/gomti-nagar", "enabled": true},
+      {"name": "Hazratganj", "path": "/lucknow/hazratganj", "enabled": true},
+      {"name": "Indira Nagar", "path": "/lucknow/indira-nagar", "enabled": true},
+      {"name": "Mahanagar", "path": "/lucknow/mahanagar", "enabled": true},
+      {"name": "Vikas Nagar", "path": "/lucknow/vikas-nagar", "enabled": true}
+    ]
+  },
+  {
+    "name": "Mumbai",
+    "path": "/mumbai",
+    "localities": [
+      {"name": "Andheri East", "path": "/mumbai/andheri-east", "enabled": true},
+      {"name": "Bandra West", "path": "/mumbai/bandra-west", "enabled": true},
+      {"name": "Colaba", "path": "/mumbai/colaba", "enabled": true},
+      {"name": "Juhu", "path": "/mumbai/juhu", "enabled": true},
+      {"name": "Lower Parel", "path": "/mumbai/lower-parel", "enabled": true},
+      {"name": "Malad West", "path": "/mumbai/malad-west", "enabled": true},
+      {"name": "Powai", "path": "/mumbai/powai", "enabled": true},
+      {"name": "Thane West", "path": "/mumbai/thane-west", "enabled": true},
+      {"name": "Vashi (Navi Mumbai)", "path": "/mumbai/vashi-navi-mumbai", "enabled": true},
+      {"name": "Worli", "path": "/mumbai/worli", "enabled": true}
+    ]
+  },
+  {
+    "name": "Pune",
+    "path": "/pune",
+    "localities": [
+      {"name": "Aundh", "path": "/pune/aundh", "enabled": true},
+      {"name": "Baner", "path": "/pune/baner", "enabled": true},
+      {"name": "Hadapsar", "path": "/pune/hadapsar", "enabled": true},
+      {"name": "Hinjewadi", "path": "/pune/hinjewadi", "enabled": true},
+      {"name": "Kalyani Nagar", "path": "/pune/kalyani-nagar", "enabled": true},
+      {"name": "Koregaon Park", "path": "/pune/koregaon-park", "enabled": true},
+      {"name": "Kothrud", "path": "/pune/kothrud", "enabled": true},
+      {"name": "Magarpatta City", "path": "/pune/magarpatta-city", "enabled": true},
+      {"name": "Shivaji Nagar", "path": "/pune/shivaji-nagar", "enabled": true},
+      {"name": "Viman Nagar", "path": "/pune/viman-nagar", "enabled": "true"}
+    ]
+  }
+]

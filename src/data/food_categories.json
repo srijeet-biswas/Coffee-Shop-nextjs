@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {"id": "c01", "name": "Indian", "slug": "indian"},
+    {"id": "c02", "name": "Chinese", "slug": "chinese"},
+    {"id": "c03", "name": "Italian", "slug": "italian"},
+    {"id": "c04", "name": "Fast Food", "slug": "fast-food"},
+    {"id": "c05", "name": "Desserts", "slug": "desserts"},
+    {"id": "c06", "name": "Beverages", "slug": "beverages"},
+    {"id": "c07", "name": "Pizza", "slug": "pizza"},
+    {"id": "c08", "name": "Biryani", "slug": "biryani"},
+    {"id": "c09", "name": "Burger", "slug": "burger"},
+    {"id": "c10", "name": "South Indian", "slug": "south-indian"},
+    {"id": "c11", "name": "Healthy Food", "slug": "healthy"},
+    {"id": "c12", "name": "Continental", "slug": "continental"},
+    {"id": "c13", "name": "Street Food", "slug": "street-food"},
+    {"id": "c14", "name": "Salad", "slug": "salad"},
+    {"id": "c15", "name": "Noodles", "slug": "noodles"},
+    {"id": "c16", "name": "Kebab", "slug": "kebab"},
+    {"id": "c17", "name": "Rolls & Wraps", "slug": "rolls-wraps"},
+    {"id": "c18", "name": "Snacks", "slug": "snacks"}
+  ]
+}
