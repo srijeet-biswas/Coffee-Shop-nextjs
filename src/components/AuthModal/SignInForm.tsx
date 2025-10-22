@@ -1,24 +1,28 @@
-
 import React, { useState } from 'react';
+import { useAuthModal } from '@/context/AuthContext'; // Import the hook
 
 // Define the props for SignInForm
 interface SignInFormProps {
     switchView: () => void; // Function to switch to the SignUp view
-    closeModal: () => void; // Function to close the entire modal
+    // closeModal: () => void; // <-- Removed this prop
 }
 
-export const SignInForm: React.FC<SignInFormProps> = ({ switchView, closeModal }) => {
+export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
+    // Get the sign-in function and loading state from the context
+    const { signIn, isLoading } = useAuthModal();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Here you would typically send the email and password to your authentication API
-        //console.log('Signing In with:', { email, password });
-        // After successful login, close the modal
-        closeModal();
-        // In a real app, you'd handle loading states, errors, and actual user session management
+        
+        // Call the signIn function from the context
+        await signIn({ email, password });
+        
+        // The context will automatically handle closing the modal on success
+        // and logging any errors to the console.
     };
 
     return (
@@ -94,9 +98,10 @@ export const SignInForm: React.FC<SignInFormProps> = ({ switchView, closeModal }
             <div>
                 <button
                     type="submit"
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-opacity-90"
+                    disabled={isLoading} // <-- Add disabled state
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-opacity-90 disabled:opacity-50" // <-- Add disabled style
                 >
-                    Sign In
+                    {isLoading ? 'Signing In...' : 'Sign In'} {/* <-- Add loading text */}
                 </button>
             </div>
 

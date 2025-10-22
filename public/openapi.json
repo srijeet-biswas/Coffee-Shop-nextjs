@@ -181,6 +181,25 @@
     }
   },
   "paths": {
+    "/auth/signin": {
+      "post": {
+        "operationId": "post-auth-signin",
+        "summary": "",
+        "description": "",
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "operationId": "get-health",
