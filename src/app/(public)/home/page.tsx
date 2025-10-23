@@ -27,7 +27,7 @@ export default function HomePage() {
 
   return (
     <div className="relative">
-      <main className="w-full">
+      <main className="w-full bg-gray-100 dark:bg-gray-900">
         <section
           className="relative flex h-[60dvh] flex-col items-center justify-center"
           style={{
@@ -49,7 +49,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-semibold">Popular localities in and around Bengaluru</h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {popularLocalities.map((locality) => (
-                <Link href={locality.path as Route} key={locality.name} passHref>
+                <Link href={`/delivery${locality.path}` as Route} key={locality.name} passHref>
                   <Card className="cursor-pointer transition-transform duration-200 hover:scale-105">
                     <CardHeader>
                       <CardTitle>{locality.name}</CardTitle>
@@ -64,7 +64,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-semibold">Explore options near me</h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {allCities.map((city) => (
-                <Link href={city.path as Route} key={city.name} passHref>
+                <Link href={`/delivery${city.path}` as Route} key={city.name} passHref>
                   <Card className="cursor-pointer transition-transform duration-200 hover:scale-105">
                     <CardHeader>
                       <CardTitle>{city.name}</CardTitle>

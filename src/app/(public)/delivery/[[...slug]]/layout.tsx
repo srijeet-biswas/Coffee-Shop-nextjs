@@ -12,9 +12,9 @@ export default function DeliveryLayout({
       {/* This is your unique UI for Delivery.
         For example, a sticky header.
       */}
-      <header className="sticky top-0 z-20 p-3 bg-red-500 text-white text-center shadow-lg">
+      {/* <header className="sticky top-0 z-20 p-3 bg-red-500 text-white text-center shadow-lg">
         Delivery Mode
-      </header>
+      </header> */}
       
       {/* The SubHeader is included in the layout */}
       <SubHeader />

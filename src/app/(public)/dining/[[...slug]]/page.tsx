@@ -26,8 +26,10 @@ type ModeContentPageProps = {
   };
 };
 
-export default async function ModeContentPage({ params }: ModeContentPageProps) {
-  const { mode, slug = [] } = params;
+export default async function ModeContentPage(props: Promise<ModeContentPageProps>) {
+  const { params } = await props;
+  const { slug = [] } = params;
+  const mode = 'dining';
 
   // 1. EXTRACT CITY AND LOCALITY
   // Example: slug = ['pune'] -> city = 'pune', locality = null
@@ -77,7 +79,7 @@ export default async function ModeContentPage({ params }: ModeContentPageProps) 
           
           <BreadcrumbItem key="city">
             {/* Link back to the City's default mode (which is delivery via the redirect) */}
-            <BreadcrumbLink href={`/${city}` as Route}>{capitalizedCity}</BreadcrumbLink>
+            <BreadcrumbLink href={`/${mode}/${city}` as Route}>{capitalizedCity}</BreadcrumbLink>
           </BreadcrumbItem>
 
           {locality && (
@@ -112,8 +114,7 @@ export default async function ModeContentPage({ params }: ModeContentPageProps) 
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {localities.map((loc) => (
               <Link 
-                // Link to the base locality path (e.g., /pune/koramangla) which will redirect to /delivery/pune/koramangla
-                href={`/${currentPathSegments}/${loc.slug}` as Route} 
+                href={`/${mode}/${currentPathSegments}/${loc.slug}` as Route} 
                 key={loc.name} 
                 passHref
               >

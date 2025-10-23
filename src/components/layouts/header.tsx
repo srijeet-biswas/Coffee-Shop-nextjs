@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { UserCircleIcon } from 'lucide-react';
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +10,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { UserCircleIcon } from 'lucide-react';
+import Link from "next/link";
 
 // Import the real auth hook
 import { useAuthModal } from "@/context/AuthContext";

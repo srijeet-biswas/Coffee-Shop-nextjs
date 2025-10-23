@@ -56,7 +56,7 @@ export default function SubHeader() {
   };
 
   return (
-    <div className="p-4 shadow-sm">
+    <div className="p-0 shadow-sm">
       <div className="relative border-b-2 border-gray-200">
         <div className="flex items-center space-x-8">
           {tabs.map((tab, index) => {
@@ -65,7 +65,7 @@ export default function SubHeader() {
             return (
               <button
                 key={tab.id}
-                ref={(el) => (tabsRef.current[index] = el)}
+                ref={(el) => { tabsRef.current[index] = el; }}
                 // 4. Use the new navigation handler
                 onClick={() => handleTabClick(tab.id)}
                 // Use cn utility for cleaner class names
