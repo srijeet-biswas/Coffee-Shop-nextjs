@@ -1,14 +1,15 @@
-// components/AuthModal/SignUpForm.tsx
-
 import React, { useState } from 'react';
+import { useAuthModal } from '@/src/context/AuthContext';
 
 // Define the props for SignUpForm
 interface SignUpFormProps {
     switchView: () => void; // Function to switch to the SignIn view
-    closeModal: () => void; // Function to close the entire modal
+    //closeModal: () => void; // Function to close the entire modal
 }
 
-export const SignUpForm: React.FC<SignUpFormProps> = ({ switchView, closeModal }) => {
+export const SignUpForm: React.FC<SignUpFormProps> = ({ switchView }) => {
+    const {signUp, isLoading} = useAuthModal();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ switchView, closeModal }
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             alert('Passwords do not match!'); // Basic client-side validation
@@ -26,10 +27,11 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ switchView, closeModal }
             alert('You must agree to the Terms of Service and Privacy Policy.');
             return;
         }
+        await signUp({name, email, password});
         // Here you would typically send the registration data to your API
         //console.log('Signing Up with:', { name, email, password });
         // After successful registration, close the modal (or navigate to a dashboard)
-        closeModal();
+        //closeModal();
         // In a real app, handle loading, errors, and actual user session management
     };
 
@@ -158,9 +160,10 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ switchView, closeModal }
             <div>
                 <button
                     type="submit"
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-opacity-90"
+                    disabled={isLoading} // Disable button when loading
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-opacity-90 disabled:opacity-50"
                 >
-                    Sign Up
+                    {isLoading ? 'Signing Up...' : 'Sign Up'}
                 </button>
             </div>
 

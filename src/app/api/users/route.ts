@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import { z } from "zod";
-
+import bcrypt from "bcrypt";
 import { UserService } from "@/app/_libs/services/user.service";
 
 // Validation schemas
 const CreateUserSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name too long"),
   email: z.string().trim().email("Invalid email format").max(255, "Email too long"),
+  password: z.string().min(8, "Password must be at least 8 characters long"),
 });
 
 // GET /api/users - Fetch all users
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email } = validationResult.data;
+    const { name, email, password } = validationResult.data;
 
     // Check if user with email already exists
     const existingUser = await UserService.getUserByEmail(email);
@@ -87,13 +87,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     // Create user
-    const user = await UserService.createUser({ name, email });
+    const user = await UserService.createUser({ 
+      name, 
+      email, 
+      hashedPassword 
+    });
+
+    const { hashedPassword: _, ...userWithoutPassword } = user;
 
     return NextResponse.json(
       {
         success: true,
-        user,
+        user: userWithoutPassword,
         message: "User created successfully",
       },
       { status: 201 },
