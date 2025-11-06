@@ -4,9 +4,11 @@ import Script from "next/script";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 import GoogleAnalyticsScripts from "@/app/_components/google-analytics";
-import SonnarToaster from "@/app/_components/sonner-toaster";
+//import SonnarToaster from "@/app/_components/sonner-toaster";
 import { geologica } from "@/app/_config/fonts";
 import { getJsonLd } from "@/app/_config/jsonId";
 import { metadata } from "@/app/_config/metadata";
@@ -30,7 +32,19 @@ export default function RootLayout({
           <AuthModal />
           {children}
         </AuthContextProvider>
-        <SonnarToaster />
+        <ToastContainer
+          position="top-right" // Set position
+          autoClose={3000} // Optional: auto close after 3 seconds
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored" // Or "light", "dark"
+        />
+        {/* <SonnarToaster /> */}
         <GoogleAnalyticsScripts />
         <SpeedInsights />
         <Analytics />

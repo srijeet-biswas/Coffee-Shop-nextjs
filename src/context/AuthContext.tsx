@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { toast } from 'react-toastify';
 
 // --- Types ---
 /** The two possible views for the modal. */
@@ -57,8 +58,9 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
                 setUser(JSON.parse(storedUser));
             }
 
-        } catch(error) {
+        } catch(error: any) {
             console.error("Failed to load ", error);
+            toast.error(error.message || 'Failed to load');
         } finally {
             setIsAppLoading(false);
         }
@@ -90,6 +92,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
         } catch(error: any) {
             console.log('Sign in error', error.message);
+            toast.error(error.message || 'An unexpected error occurred.');
         } finally {
             setIsLoading(false);
         }
@@ -112,6 +115,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
         } catch(error: any) {
             console.log('Error faced in Signup ', error.message);
+            toast.error(error.message || 'An unexpected error occurred.');
         } finally {
             setIsLoading(false);
         }
@@ -122,6 +126,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
         setToken(null);
         localStorage.removeItem('authUser');
         localStorage.removeItem('authToken');
+        router.push('/');
     };
 
     const contextValue: AuthContextType = {
