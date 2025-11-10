@@ -1,28 +1,47 @@
 import React, { useState } from 'react';
-import { useAuthModal } from '@/context/AuthContext'; // Import the hook
+// 1. Import signIn from next-auth/react
+import { signIn as nextAuthSignIn } from "next-auth/react";
+// 2. Import your context hook to control the modal (close it on success)
+import { useAuthModal } from '@/context/AuthContext';
 
 // Define the props for SignInForm
 interface SignInFormProps {
     switchView: () => void; // Function to switch to the SignUp view
-    // closeModal: () => void; // <-- Removed this prop
 }
 
 export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
-    // Get the sign-in function and loading state from the context
-    const { signIn, isLoading } = useAuthModal();
+    // 3. Get modal controls from your context
+    const { closeModal } = useAuthModal(); 
 
+    // 4. Use local state for loading and form errors
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        // Call the signIn function from the context
-        await signIn({ email, password });
-        
-        // The context will automatically handle closing the modal on success
-        // and logging any errors to the console.
+        setIsLoading(true);
+        setError(null);
+
+        // 5. Call nextAuthSignIn with 'credentials'
+        const result = await nextAuthSignIn('credentials', {
+            email: email,
+            password: password,
+            redirect: false, // We handle success/error manually
+        });
+
+        setIsLoading(false);
+
+        if (result && result.ok) {
+            // 6. Success! Close the modal.
+            if (closeModal) closeModal();
+        } else {
+            // 7. Handle errors from the 'authorize' function
+            setError(result?.error || 'An unknown error occurred.');
+        }
     };
 
     return (
@@ -70,7 +89,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-400 hover:text-white focus:outline-none"
                         aria-label={showPassword ? 'Hide password' : 'Show password'}
                     >
-                        {/* Simple eye icon or text */}
+                        {/* Eye icon logic */}
                         {showPassword ? (
                             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.006-.03A6.5 6.5 0 0112 10.5a6.478 6.478 0 01-5.027 2.113M15 9.153a4.5 4.5 0 00-4.5-4.5V9.153c0 1.25-.457 2.441-1.282 3.328m7.027 3.003V16.5a6.5 6.5 0 01-4.787 3.256M12 19l4.586-4.586M17.414 12L21 15.586M2 2L22 22" />
@@ -85,6 +104,13 @@ export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
                 </div>
             </div>
 
+            {/* --- ADDED: Error Message Display --- */}
+            {error && (
+                <div className="text-red-400 text-sm text-center -my-3">
+                    {error}
+                </div>
+            )}
+
             {/* Forgot Password Link */}
             <div className="flex items-center justify-between">
                 <div className="text-sm">
@@ -98,10 +124,10 @@ export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
             <div>
                 <button
                     type="submit"
-                    disabled={isLoading} // <-- Add disabled state
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-opacity-90 disabled:opacity-50" // <-- Add disabled style
+                    disabled={isLoading}
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-opacity-90 disabled:opacity-50"
                 >
-                    {isLoading ? 'Signing In...' : 'Sign In'} {/* <-- Add loading text */}
+                    {isLoading ? 'Signing In...' : 'Sign In'}
                 </button>
             </div>
 
@@ -116,10 +142,11 @@ export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
-                {/* Google Sign In */}
+                {/* --- 8. GOOGLE SIGN-IN BUTTON (changed to button) --- */}
                 <div>
-                    <a
-                        href="#"
+                    <button
+                        type="button" // Important: prevents form submission
+                        onClick={() => nextAuthSignIn('google')} // Calls NextAuth Google provider
                         className="w-full inline-flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-sm font-medium text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                     >
                         <span className="sr-only">Sign in with Google</span>
@@ -128,10 +155,10 @@ export const SignInForm: React.FC<SignInFormProps> = ({ switchView }) => {
                             <path d="M12.482 11.231H12v2.32H16.5c-.246 1.488-1.574 2.766-3.832 2.766-3.791 0-6.884-3.093-6.884-6.884s3.093-6.884 6.884-6.884c2.059 0 3.693.896 4.542 1.744L17.7 7.07c-.63-.585-1.78-.9-2.738-.9-2.454 0-4.444 1.99-4.444 4.444s1.99 4.444 4.444 4.444c2.454 0 3.968-1.68 4.214-3.698H12.482z" />
                         </svg>
                         Google
-                    </a>
+                    </button>
                 </div>
 
-                {/* Facebook Sign In */}
+                {/* Facebook Sign In (This is still a link, can be updated later) */}
                 <div>
                     <a
                         href="#"

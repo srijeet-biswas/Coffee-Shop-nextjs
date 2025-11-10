@@ -17,6 +17,7 @@ import AuthModal from "@/src/components/AuthModal";
 import Header from "@/src/components/layouts/header";
 import { AuthContextProvider } from "@/src/context/AuthContext";
 
+import AuthProviders from "./AuthProviders";
 export { metadata, viewport };
 
 export default function RootLayout({
@@ -27,11 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geologica.variable} font-sans antialiased`}>
+        <AuthProviders>
         <AuthContextProvider>
           <Header />
           <AuthModal />
           {children}
         </AuthContextProvider>
+        </AuthProviders>
         <ToastContainer
           position="top-right" // Set position
           autoClose={3000} // Optional: auto close after 3 seconds
